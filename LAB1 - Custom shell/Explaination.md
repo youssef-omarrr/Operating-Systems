@@ -53,19 +53,19 @@ const char *LOG_FILE = "myshell.log";
         exit(1);
     }
 ```
-- **Declares a sigaction struct (sa) to specify the behavior of the SIGCHLD signal.**
+- Declares a **sigaction struct (sa)** to specify the behavior of the **SIGCHLD** signal.
 
-- **Assigns the signal handler function:**
+- Assigns the signal handler function:
   - **sa.sa_handler = sigchld_handler;** → **Calls** sigchld_handler when SIGCHLD is received.
 
-- **Initializes the signal mask:**
+- Initializes the signal mask:
   - **sigemptyset(&sa.sa_mask);** → **Clears** all **blocked** signals to ensure no other signals interfere.
 
-- **Sets signal handler flags:**
+- Sets signal handler flags:
   - **SA_RESTART:** Ensures **interrupted** system calls (e.g., read, waitpid) **resume execution.**
   - **SA_NOCLDSTOP:** Prevents **receiving** SIGCHLD signals when a child process is **stopped** (only triggers on termination).
 
-- **Registers the signal handler using sigaction(SIGCHLD, &sa, 0);.**
+- Registers the signal handler using sigaction(SIGCHLD, &sa, 0);.
   - If **sigaction()** fails, it prints an error message and exits the shell.
 
 ---
