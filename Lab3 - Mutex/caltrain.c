@@ -2,7 +2,7 @@
 #include "caltrain.h"
 
 /*
-to complie the code: 
+to complie the code: make caltrain
 to run the code: ./repeat.sh
 
 */
@@ -29,7 +29,7 @@ void station_load_train(struct station *station, int count)
 	station->seats_available = count;
 
 	/*
-	If the number of pe0ple waiting less than the number of available seats then everybody waiting can sit
+	If the number of people waiting less than the number of available seats then everybody waiting can sit
 	else then it's the number of all available seats
 	 */
 	station->people_to_sit = (station->waiting < count) ? station->waiting : count;
